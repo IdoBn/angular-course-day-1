@@ -1,67 +1,55 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-		<script src="bower_components/angular/angular.min.js"></script>
-		<script src="app.js"></script>
-    <link rel="stylesheet" href="bower_components/bootsketch/build/css/bootsketch.css"/>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title></title>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app.js"></script>
+  <link rel="stylesheet" href="bower_components/bootsketch/build/css/bootsketch.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body ng-controller="todoCtrl">
-
 <div class="container">
-
-    <div class="page-header">
-        <h1>Need To Do!</h1>
-
-        <p>simple introduction level angular project</p>
-    </div>
-
-    <form class="form-inline">
-
-        <div class="form-group">
-            <label for="taskTitle">Task Title</label>
-            <input type="text" class="form-control" id="taskTitle" ng-model="task.title" placeholder="title...">
-        </div>
-
-        <div class="form-group">
-            <label for="taskDesc">Description</label>
-            <input class="form-control" id="taskDesc" ng-model="task.desc" placeholder="description..">
-        </div>
-
-        <div class="form-group">
-            <button ng-show="!edit" class="form-control btn btn-default" ng-click="addTask(task)">Add</button>
-            <button ng-show="edit" class="form-control btn btn-default" ng-click="task = {}; edit = false">Edit</button>
-        </div>
-    </form>
-
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>done</th>
-            <th>title</th>
-            <th>description</th>
-            <td></td>
-        </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in tasks">
-                <td><input class="input" type="checkbox" ng-model="item.complete"/></td>
-                <td ng-class="{strike: item.complete}">{{item.title}}</td>
-                <td ng-class="{strike: item.complete}">{{item.desc}}</td>
-                <td>
-                  <button class="btn btn-danger" ng-click="removeTask(item)"><i class="glyphicon glyphicon-trash"></i></button>
-                  <button class="btn btn-info" ng-click="editTask(item)"><i class="glyphicon glyphicon-pencil"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+  <div class="page-header">
+    <h1>Need To Do!</h1>
+    <p>simple introduction level angular project</p>
+  </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="taskTitle">Task Title</label>
+      <input type="text" class="form-control" id="taskTitle" ng-model="task.title" placeholder="title...">
+    </div>
+    <div class="form-group">
+      <label for="taskDesc">Description</label>
+      <input class="form-control" id="taskDesc" ng-model="task.desc" placeholder="description..">
+    </div>
+    <div class="form-group">
+      <button ng-show="!edit" class="form-control btn btn-default" ng-click="addTask(task)">Add</button>
+      <button ng-show="edit" class="form-control btn btn-default" ng-click="task = {}; edit = false">Edit</button>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>done</th>
+        <th>title</th>
+        <th>description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in tasks">
+        <td><input class="input" type="checkbox" ng-model="item.complete"/></td>
+        <td ng-class="{strike: item.complete}">{{item.title}}</td>
+        <td ng-class="{strike: item.complete}">{{item.desc}}</td>
+        <td>
+          <button class="btn btn-danger" ng-click="removeTask(item)"><i class="glyphicon glyphicon-trash"></i></button>
+          <button class="btn btn-info" ng-click="editTask(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
 </body>
-
 </html>
