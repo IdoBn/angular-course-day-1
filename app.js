@@ -5,7 +5,6 @@
   controller('todoCtrl', ['$scope', function($scope){
     $scope.tasks = [];
     $scope.task = {};
-    $scope.edit = false;
 
     $scope.addTask = function(task) {
       task.complete = false;
@@ -20,7 +19,6 @@
 
     $scope.editTask = function(task) {
       $scope.task = task;
-      $scope.edit = true;
     };
   }])
 
