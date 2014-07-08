@@ -2,28 +2,28 @@
 
   angular.module('app', []).
 
-  controller('todoCtrl', ['$scope', function($scope){
-    $scope.tasks = [];
-    $scope.task = {};
+  controller('todoCtrl', function(){
+    this.tasks = [];
+    this.task = {};
 
-    $scope.addTask = function(task) {
+    this.addTask = function(task) {
       if(task.complete == null) {
         task.complete = false;
-        $scope.tasks.push(task);
-        $scope.task = {};
+        this.tasks.push(task);
+        this.task = {};
       } else {
-        $scope.task = {};
+        this.task = {};
       }
     };
     
-    $scope.removeTask = function(task) {
-      var index = $scope.tasks.indexOf(task);
-      $scope.tasks.splice(index, 1);
+    this.removeTask = function(task) {
+      var index = this.tasks.indexOf(task);
+      this.tasks.splice(index, 1);
     };
 
-    $scope.editTask = function(task) {
-      $scope.task = task;
+    this.editTask = function(task) {
+      this.task = task;
     };
-  }])
+  })
 
 })(window, angular);
