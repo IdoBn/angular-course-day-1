@@ -2,7 +2,9 @@
 
   angular.module('app', []).
 
-  controller('todoCtrl', function(){
+  controller('todoCtrl', todoCtrl); 
+
+  function todoCtrl() {
     this.tasks = [];
     this.task = {};
 
@@ -24,6 +26,6 @@
     this.editTask = function(task) {
       this.task = task;
     };
-  })
+  };
 
 })(window, angular);
