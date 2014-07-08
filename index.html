@@ -39,10 +39,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in tasks">
+      <tr ng-repeat="item in tasks" ng-class="{strike: item.complete}">
         <td><input class="input" type="checkbox" ng-model="item.complete"/></td>
-        <td ng-class="{strike: item.complete}">{{item.title}}</td>
-        <td ng-class="{strike: item.complete}">{{item.desc}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.desc}}</td>
         <td>
           <button class="btn btn-danger" ng-click="removeTask(item)"><i class="glyphicon glyphicon-trash"></i></button>
           <button class="btn btn-info" ng-click="editTask(item)"><i class="glyphicon glyphicon-pencil"></i></button>
