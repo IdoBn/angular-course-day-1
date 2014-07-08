@@ -7,9 +7,13 @@
     $scope.task = {};
 
     $scope.addTask = function(task) {
-      task.complete = false;
-      $scope.tasks.push(task);
-      $scope.task = {}
+      if(task.complete == null) {
+        task.complete = false;
+        $scope.tasks.push(task);
+        $scope.task = {};
+      } else {
+        $scope.task = {};
+      }
     };
     
     $scope.removeTask = function(task) {

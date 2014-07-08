@@ -25,8 +25,8 @@
       <input class="form-control" id="taskDesc" ng-model="task.desc" placeholder="description..">
     </div>
     <div class="form-group">
-      <button ng-show="task.complete == null" class="form-control btn btn-default" ng-click="addTask(task)">Add</button>
-      <button ng-show="task.complete != null" class="form-control btn btn-default" ng-click="task = {}; edit = false">Edit</button>
+      <button class="form-control btn btn-default" ng-click="addTask(task)">{{ (task.complete == null) ? 'Add' : 'Edit' }}</button>
+      <!-- <button ng-show="task.complete != null" class="form-control btn btn-default" ng-click="task = {}">Edit</button> -->
     </div>
   </form>
   <table class="table table-striped">
