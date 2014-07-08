@@ -2,12 +2,10 @@
 
   angular.module('app', [])
     .controller('todoCtrl', todoCtrl)
-    .factory('localTodo', localTodoService); 
+    .factory('localStoreService', localStoreService); 
 
-  function todoCtrl(localTodo) {
-    //localTodo.add({ title: 'test', desc: 'a desc', complete: false  });
-
-    this.tasks = localTodo.get();
+  function todoCtrl(localStoreService) {
+    this.tasks = localStoreService.get('tasks');
     this.task = {};
 
     this.saveTask = function(task) {
@@ -19,14 +17,13 @@
         });
       }
       this.task = {};
-      console.log(this.tasks)
-      localTodo.set(this.tasks);
+      localStoreService.set('tasks',this.tasks);
     };
     
     this.removeTask = function(task) {
       var index = this.tasks.indexOf(task);
       this.tasks.splice(index, 1);
-      localTodo.set(this.tasks);
+      localStoreService.set('tasks',this.tasks);
     };
 
     this.editTask = function(task) {
@@ -34,22 +31,16 @@
     };
   };
 
-  function localTodoService() {
-    var tasks = null;
-    try {
-      tasks = JSON.parse(localStorage.getItem('tasks'));
-    } catch(error) {
-      tasks = [{title: 'first task', desc: 'you should write more tasks', complete: false}];
-    }
-
-    localStorage.setItem('tasks', angular.toJson(tasks));
-
+  function localStoreService() {
     return {
-      get: function() {
-        return JSON.parse(localStorage.getItem('tasks'));
+      get: function(str) {
+        if (!localStorage.getItem(str)) {
+          localStorage.setItem(str, angular.toJson(new Array()));  
+        };
+        return JSON.parse(localStorage.getItem(str));
       },
-      set: function(tasks) {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+      set: function(str, items) {
+        localStorage.setItem(str, angular.toJson(items));
       }
     };
   };
