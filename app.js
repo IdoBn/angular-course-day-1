@@ -30,16 +30,16 @@
     };
   };
 
-  function localStoreService() {
+  function localStoreService($window) {
     return {
       get: function(str) {
         if (!localStorage.getItem(str)) {
-          localStorage.setItem(str, angular.toJson(new Array()));  
+          $window.localStorage.setItem(str, angular.toJson(new Array()));  
         };
         return JSON.parse(localStorage.getItem(str));
       },
       set: function(str, items) {
-        localStorage.setItem(str, angular.toJson(items));
+        $window.localStorage.setItem(str, angular.toJson(items));
       }
     };
   };
