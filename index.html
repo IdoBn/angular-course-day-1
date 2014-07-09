@@ -5,7 +5,7 @@
   <title></title>
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="app.js"></script>
-  <link rel="stylesheet" href="bower_components/bootsketch/build/css/bootsketch.css"/>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,7 +25,7 @@
       <input class="form-control" id="taskDesc" ng-model="todo.task.desc" placeholder="description..">
     </div>
     <div class="form-group">
-      <button class="form-control btn btn-default" ng-click="todo.saveTask(todo.task)">{{ (todo.task.complete == null) ? 'Add' : 'Edit' }}</button>
+      <button class="form-control btn btn-primary" ng-click="todo.saveTask(todo.task)">{{ (todo.task.complete == null) ? 'Add' : 'Edit' }}</button>
     </div>
   </form>
   <table class="table table-striped">

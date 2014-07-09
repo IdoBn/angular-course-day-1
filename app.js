@@ -6,7 +6,6 @@
 
   function todoCtrl(localStoreService) {
     this.tasks = localStoreService.get('tasks');
-    this.task = {};
 
     this.saveTask = function(task) {
       if(task && task.complete == null) {
